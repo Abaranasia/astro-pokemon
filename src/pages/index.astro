@@ -1,14 +1,17 @@
 ---
+import type { PokemonResponse } from "../interfaces/pokemon.response";
 import MainLayout from "../layouts/MainLayout.astro";
 
-// https://pokeapi.co/api/v2/pokemon
-const resp = await fetch('https://pokeapi.co/api/v2/pokemon');
-const data = await resp.json();
-console.log('data :>> ', data);
+const resp = await fetch("https://pokeapi.co/api/v2/pokemon");
+const data = (await resp.json()) as PokemonResponse;
+console.log("data :>> ", data);
 
 const title = "Pokemon - Home page";
 ---
 
 <MainLayout title={title}>
-  <h1 class="text-3xl text-blue-100">Home</h1>
+  <h1 class="text-3xl text-blue-100">Pokemon list</h1>
+  <ul>
+    {data.results.map((pokemon) => <li>{pokemon.name}</li>)}
+  </ul>
 </MainLayout>
