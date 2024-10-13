@@ -1,0 +1,39 @@
+---
+import type { GetStaticPaths } from "astro";
+import MainLayout from "../../layouts/MainLayout.astro";
+import PokemonCard from "../../components/PokemonCard.astro";
+import type { PokemonResponse } from "../../interfaces/pokemon.response";
+
+const title = "Pokemon";
+// const { url } = Astro.props;
+
+export const getStaticPaths = (async () => {
+  const resp = await fetch("https://pokeapi.co/api/v2/pokemon?limit=160");
+  const { results } = (await resp.json()) as PokemonResponse;
+
+  return results.map(({name, url}) => ({
+    params: { name },
+    props: { name, url },
+  }));
+}) satisfies GetStaticPaths;
+
+const { name, url } = Astro.props;
+---
+
+<MainLayout title={title}>
+  <section
+    aria-label="Pokemon description"
+    class="met-10 mx-10 flex flex-col justify-center items-center"
+  >
+    <h1 class="text-3xl text-blue-100 capitalize">{name}</h1>
+
+    <PokemonCard name={name} url={url} isBig />
+    <a href="/">Back</a>
+  </section>
+</MainLayout>
+
+<style>
+  a {
+    @apply hover:underline text-blue-500;
+  }
+</style>
