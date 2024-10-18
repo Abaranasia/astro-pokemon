@@ -1,9 +1,9 @@
 ---
 import type { GetStaticPaths } from "astro";
 
-import PokemonCard from "../../components/PokemonCard.astro";
-import MainLayout from "../../layouts/MainLayout.astro";
-import type { PokemonResponse } from "../../interfaces/pokemon.response";
+import PokemonCard from "@components/PokemonCard.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import type { PokemonResponse } from "@interfaces/pokemon.response";
 
 export const getStaticPaths = (async ({ paginate }) => {
   const resp = await fetch("https://pokeapi.co/api/v2/pokemon?limit=160");
