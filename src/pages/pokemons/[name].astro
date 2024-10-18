@@ -16,11 +16,14 @@ export const getStaticPaths = (async () => {
     props: { name, url },
   }));
 }) satisfies GetStaticPaths;
-
 const { name, url } = Astro.props;
+const id = url.split("/").at(-2);
 ---
 
-<MainLayout title={title}>
+<MainLayout 
+  title={`Pokemon - #${id} ${name}`}
+  description={`Information about the pokemon ${name}`}
+  >
   <section
     aria-label="Pokemon description"
     class="met-10 mx-10 flex flex-col justify-center items-center"
