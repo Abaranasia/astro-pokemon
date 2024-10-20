@@ -1,5 +1,6 @@
 ---
 import PokemonCard from "@components/PokemonCard.astro";
+import Title from "@components/shared/Title.astro";
 import type { PokemonResponse } from "@interfaces/pokemon.response";
 import MainLayout from "@layouts/MainLayout.astro";
 
@@ -10,7 +11,7 @@ const title = "Pokemon - Home page";
 ---
 
 <MainLayout title={title}>
-  <h1 class="text-3xl text-blue-100">Pokemon list</h1>
+  <Title>Pokemon list</Title>
   <section
     aria-label="Pokemon list"
     class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4 mt-5"
