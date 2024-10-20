@@ -4,21 +4,28 @@ const links = [
   { href: "/pokemons/1", label: "Paginated" },
   { href: "/favorites", label: "Favourites" },
 ];
+
+const { pathname } = Astro.url;
 ---
 
 <!-- component -->
-<nav class="shadow bg-gray-800">
+<nav class="shadow bg-black">
   <div
     class="container flex items-center justify-center p-6 mx-auto capitalize text-gray-300"
   >
     {
-      links.map(({href, label}) => (
-        <a
-          href={href}
-          class="text-blue-200 dark:text-gray-200 border-b-2 border-blue-500 mx-1.5 sm:mx-6"
-        >
-          {label}
-        </a>
+      links.map(({ href, label }) => (
+        <div>
+          <a href={href} class="dark:text-gray-200 mx-1.5 sm:mx-6">
+            {label}
+          </a>
+          { href === pathname &&
+            <div 
+                transition:name="menu-line"
+                class="text-blue-200 border-b-2 border-blue-500 mx-4"
+            >
+            </div>}
+        </div>
       ))
     }
   </div>
