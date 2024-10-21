@@ -3,9 +3,9 @@ import { Counter } from "@components/Counter";
 import Title from "@components/shared/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 
-
+const counterValue = 20;
 ---
 <MainLayout title="Islands">
     <Title>Islands</Title>
-    <Counter client:idle />
+    <Counter initValue={counterValue} client:idle />
 </MainLayout>
