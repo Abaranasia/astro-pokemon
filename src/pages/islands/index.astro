@@ -5,7 +5,13 @@ import MainLayout from "@layouts/MainLayout.astro";
 
 const counterValue = 20;
 ---
+
 <MainLayout title="Islands">
-    <Title>Islands</Title>
-    <Counter initValue={counterValue} client:idle />
+  <Title>Islands</Title>
+  <Counter
+    transition:persist="counter"
+    transition:persist-props
+    initValue={counterValue}
+    client:idle
+  />
 </MainLayout>

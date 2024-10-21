@@ -1,9 +1,15 @@
 ---
+import { Counter } from "@components/Counter";
 import Title from "@components/shared/Title.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-
-
 ---
+
 <MainLayout title="Favorites">
-   <Title>Fav Pokemons</Title>
+  <Title>Favorites</Title>
+  <Counter
+    transition:persist="counter"
+    transition:persist-props
+    initValue={14}
+    client:idle
+  />
 </MainLayout>
