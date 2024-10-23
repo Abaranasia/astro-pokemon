@@ -48,10 +48,8 @@ const id = url.split("/").at(-2);
   </section>
 </MainLayout>
 <script>
-  interface FavouritePokemon {
-    name: string;
-    id: number;
-  }
+import type { FavouritePokemon } from "@interfaces/favoritePokemons";
+
   const handlePageLoad = () => {
     let favPokemons: FavouritePokemon[] = JSON.parse(
       localStorage.getItem("favorites") ?? "[]"
